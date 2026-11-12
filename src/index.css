@@ -1978,6 +1978,14 @@ h1 {
 
 /* Comfortable reading and touch targets at narrow widths. */
 .main-nav button { white-space: nowrap; }
+.workspace { --workspace-scale: 1; }
+@media (min-width: 1024px) {
+  .workspace {
+    --workspace-scale: 1.25;
+    zoom: var(--workspace-scale);
+    margin-left: calc(70px / var(--workspace-scale));
+  }
+}
 .service-card p { font-size: 11px; }
 .addon-info > span { font-size: 10px; }
 .addon-info strong { font-size: 12px; }
