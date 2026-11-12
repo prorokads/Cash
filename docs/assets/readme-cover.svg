@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="480" viewBox="0 0 1440 480" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">CASH by ALX DSGN</title>
+  <desc id="desc">Калькулятор стоимости дизайн-проектов. Хороший дизайн. Прозрачная стоимость.</desc>
+  <defs>
+    <linearGradient id="bg" x2="1440" y2="480" gradientUnits="userSpaceOnUse"><stop stop-color="#171717"/><stop offset="1" stop-color="#0D0D0D"/></linearGradient>
+    <linearGradient id="line" x1="1000" y1="90" x2="1280" y2="350" gradientUnits="userSpaceOnUse"><stop stop-color="#E1E1D4"/><stop offset="1" stop-color="#5F5F56"/></linearGradient>
+    <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".7" fill="#51514B"/></pattern>
+    <radialGradient id="fade"><stop stop-color="white"/><stop offset="1" stop-color="black"/></radialGradient>
+    <mask id="dotMask"><ellipse cx="1130" cy="230" rx="270" ry="215" fill="url(#fade)"/></mask>
+  </defs>
+  <rect x="1" y="1" width="1438" height="478" rx="18" fill="url(#bg)" stroke="#363633"/>
+  <path d="M64 84H1376M64 408H1376" stroke="#343430"/>
+  <g transform="translate(65 30)" fill="#EAEADF"><path d="M29 9H16L8 20l8 11h13v-8H19l-2-3 2-3h10V9Z"/><path d="M25 3v34" stroke="#171717" stroke-width="2.5"/></g>
+  <text x="116" y="55" fill="#EAEADF" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" letter-spacing="2">ALX DSGN</text>
+  <text x="1375" y="54" text-anchor="end" fill="#94948A" font-family="Arial,Helvetica,sans-serif" font-size="11" letter-spacing="2.2">DESIGN PROJECT ESTIMATOR</text>
+  <text x="66" y="137" fill="#A8A899" font-family="Arial,Helvetica,sans-serif" font-size="10" letter-spacing="3">МЕНЬШЕ РУТИНЫ. БОЛЬШЕ ДИЗАЙНА.</text>
+  <text x="58" y="262" fill="#F0F0E8" font-family="Arial,Helvetica,sans-serif" font-size="138" font-weight="700" letter-spacing="-8">CASH</text>
+  <text x="470" y="174" fill="#D8D8CA" font-family="Arial,Helvetica,sans-serif" font-size="20">®</text>
+  <text x="66" y="321" fill="#DCDCD0" font-family="Arial,Helvetica,sans-serif" font-size="26" letter-spacing="-.5">Хороший дизайн.</text>
+  <text x="66" y="357" fill="#A7A795" font-family="Georgia,serif" font-size="29" font-style="italic" letter-spacing="-.5">Прозрачная стоимость.</text>
+  <rect x="870" y="90" width="500" height="310" fill="url(#dots)" mask="url(#dotMask)"/>
+  <g stroke="url(#line)" stroke-width="1.5" stroke-linejoin="round">
+    <path d="m1130 119 117 67v135l-117 67-117-67V186l117-67Z"/>
+    <path d="m1013 186 117 67 117-67M1130 253v135M1130 119v134M1013 321l117-68 117 68"/>
+    <path d="m1130 155 86 50v99l-86 50-86-50v-99l86-50Z" opacity=".3"/>
+    <path d="m1044 205 86 49 86-49M1130 254v100" opacity=".3"/>
+  </g>
+  <g fill="#E5E5D7"><circle cx="1013" cy="186" r="4"/><circle cx="1247" cy="321" r="4"/><circle cx="1130" cy="253" r="3"/></g>
+  <path d="M1259 119v24M1247 131h24M976 305v16M968 313h16" stroke="#B6B6A6" stroke-width="1.5"/>
+  <text x="66" y="446" fill="#97978A" font-family="Arial,Helvetica,sans-serif" font-size="10" letter-spacing="2.5">ВЫБЕРИТЕ УСЛУГИ → НАСТРОЙТЕ ПРОЕКТ → ПОЛУЧИТЕ СМЕТУ</text>
+  <text x="1375" y="446" text-anchor="end" fill="#BEBEAB" font-family="Arial,Helvetica,sans-serif" font-size="10" letter-spacing="2.5">TEXT + MARKDOWN</text>
+</svg>

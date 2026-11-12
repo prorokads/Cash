@@ -10,6 +10,7 @@ import { promisify } from "node:util";
 import { mkdirSync } from "node:fs";
 import path from "node:path";
 import { z } from "zod";
+import { projectSchema, ratesSchema } from "../shared/project-schema.mjs";
 import {
   calculate,
   services,
@@ -21,33 +22,6 @@ import {
 const scrypt = promisify(scryptCallback);
 const sessionAge = 7 * 86400;
 const hash = (value) => createHash("sha256").update(value).digest("hex");
-const rateKeys = [
-  ...services.flatMap((s) => [s.id, `${s.id}-extra`]),
-  ...addons.map((a) => a.id),
-  ...functions.map((f) => f.id),
-];
-const ratesSchema = z.partialRecord(
-  z.enum(rateKeys),
-  z.number().int().min(0).max(10000000),
-);
-const projectSchema = z.object({
-  name: z.string().trim().min(1).max(120),
-  client: z.string().max(120),
-  service: z.enum(services.map((s) => s.id)),
-  quantity: z.number().int().min(1).max(100),
-  addons: z
-    .array(z.enum(addons.map((a) => a.id)))
-    .max(addons.length)
-    .transform((a) => [...new Set(a)]),
-  functions: z
-    .array(z.enum(functions.map((a) => a.id)))
-    .max(functions.length)
-    .transform((a) => [...new Set(a)]),
-  urgency: z.enum(urgencies.map((u) => u.id)),
-  discount: z.number().int().min(0).max(50),
-  notes: z.string().max(4000),
-  rates: ratesSchema,
-});
 const credentials = z.object({
   email: z
     .email()

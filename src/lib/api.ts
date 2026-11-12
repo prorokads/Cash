@@ -1,7 +1,15 @@
+import { createDemoApi } from "../../shared/demo-store.mjs";
+export const isDemo = import.meta.env.VITE_DEMO === "true";
+let browserApi: ReturnType<typeof createDemoApi> | undefined;
+
 export async function api<T>(
   url: string,
   options?: { method?: string; body?: unknown },
 ): Promise<T> {
+  if (isDemo) {
+    browserApi ??= createDemoApi(window.localStorage);
+    return (await browserApi(url, options)) as T;
+  }
   let response: Response;
   try {
     response = await fetch(`/api${url}`, {
