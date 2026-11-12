@@ -496,6 +496,7 @@ export default function App() {
           <Button
             variant="outline"
             className="auth-button"
+            aria-label={user ? `Аккаунт: ${user.name}` : "Войти"}
             disabled={!authReady}
             onClick={() => (user ? setModal("account") : openAuth())}
           >
