@@ -3,7 +3,13 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import path from "node:path";
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
+  base: mode === "demo" ? "/Cash/" : "/",
+  define: {
+    "import.meta.env.VITE_DEMO": JSON.stringify(
+      mode === "demo" ? "true" : "false",
+    ),
+  },
   plugins: [react(), tailwindcss()],
   resolve: { alias: { "@": path.resolve(import.meta.dirname, "./src") } },
   server: {
@@ -12,4 +18,4 @@ export default defineConfig({
     strictPort: true,
     proxy: { "/api": "http://127.0.0.1:3001" },
   },
-});
+}));

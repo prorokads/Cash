@@ -53,7 +53,7 @@ import {
 } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import { api } from "@/lib/api";
+import { api, isDemo } from "@/lib/api";
 import type { Estimate, Project, User } from "@/lib/types";
 import {
   addons,
@@ -79,7 +79,7 @@ const iconMap: Record<string, LucideIcon> = {
   code: Code2,
 };
 const freshProject = (): Project => structuredClone(defaultProject);
-const draftKey = "cash-guest-draft-v1";
+const draftKey = isDemo ? "cash-demo-draft-v1" : "cash-guest-draft-v1";
 function loadDraft(): Project {
   try {
     const draft = JSON.parse(localStorage.getItem(draftKey) ?? "null");
@@ -253,7 +253,7 @@ export default function App() {
     };
   }, []);
   useEffect(() => {
-    if (!user) {
+    if (!user || isDemo) {
       try {
         localStorage.setItem(draftKey, JSON.stringify(project));
       } catch {
@@ -493,18 +493,45 @@ export default function App() {
               Мои сметы
             </button>
           </nav>
-          <Button
-            variant="outline"
-            className="auth-button"
-            aria-label={user ? `Аккаунт: ${user.name}` : "Войти"}
-            disabled={!authReady}
-            onClick={() => (user ? setModal("account") : openAuth())}
-          >
-            <UserRound size={15} />
-            <span>{user ? user.name : "Войти"}</span>
-            {user && <ChevronDown size={12} />}
-          </Button>
+          {isDemo ? (
+            <a
+              className="demo-github"
+              href="https://github.com/prorokads/Cash"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub <ArrowUpRight size={14} />
+            </a>
+          ) : (
+            <Button
+              variant="outline"
+              className="auth-button"
+              aria-label={user ? `Аккаунт: ${user.name}` : "Войти"}
+              disabled={!authReady}
+              onClick={() => (user ? setModal("account") : openAuth())}
+            >
+              <UserRound size={15} />
+              <span>{user ? user.name : "Войти"}</span>
+              {user && <ChevronDown size={12} />}
+            </Button>
+          )}
         </header>
+        {isDemo && (
+          <div className="demo-notice">
+            <span>ДЕМО</span>
+            <p>
+              Попробуйте все возможности. Сметы и тарифы сохраняются в этом
+              браузере.
+            </p>
+            <a
+              href="https://github.com/prorokads/Cash#быстрый-старт"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Версия с аккаунтами <ArrowUpRight size={12} />
+            </a>
+          </div>
+        )}
         <main className="main-content">
           {error && (
             <div className="error-banner" role="alert">
